@@ -1,0 +1,53 @@
+repos:
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.19.0
+    hooks:
+      - id: pyupgrade
+        args: [--py39-plus]
+
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 24.10.0
+    hooks:
+      - id: black
+        args: [--target-version=py39]
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+        additional_dependencies: [flake8-2020, flake8-implicit-str-concat]
+
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: rst-backticks
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        exclude: "^.github/.*_TEMPLATE.md"
+
+  - repo: https://github.com/woodruffw/zizmor-pre-commit
+    rev: v0.9.1
+    hooks:
+      - id: zizmor
+
+  - repo: https://github.com/asottile/setup-cfg-fmt
+    rev: v2.7.0
+    hooks:
+      - id: setup-cfg-fmt
+        args: [--include-version-classifiers, --max-py-version=3.13]
+ci:
+  autoupdate_schedule: quarterly
